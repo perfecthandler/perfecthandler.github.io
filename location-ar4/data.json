@@ -1,0 +1,30 @@
+{
+    "features": [
+      {
+        "id": 1,
+        "name": "Car 1",
+        "latitude": 17.463981,
+        "longitude": 78.343768,
+        "elevation": 2,
+        "model": "Car_1.glb"
+      },
+      {
+        "id": 2,
+        "name": "Tree 1",
+        "latitude": 17.463893958032134,
+        "longitude": 78.34386495645988,
+        "elevation": 2,
+        "model": "Tree_1.obj"
+      },
+      {
+        "id": 3,
+        "name": "Tree 2",
+        "latitude": 17.463903872511093,
+        "longitude": 78.34374492760205,
+        "elevation": 2,
+        "model": "Tree_2.fbx"
+      }
+   
+    ]
+  }
+  
