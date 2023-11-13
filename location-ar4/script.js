@@ -12,7 +12,7 @@ fetch('data.json')
             // Choose the appropriate model based on the 'model' attribute
             switch (feature.model) {
                 case 'car_1.glb':
-                    modelEntity.setAttribute('gltf-model', 'url(models/car_1.glb)');
+                    modelEntity.setAttribute('gltf-model', 'models/car_1.glb');
                     break;
                 case 'tree_1.obj':
                     modelEntity.setAttribute('obj-model', 'obj: url(models/tree_1.obj)');
