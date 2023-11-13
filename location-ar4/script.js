@@ -7,7 +7,7 @@ fetch('data.json')
             alert(feature.model);
             const modelEntity = document.createElement('a-entity');
             modelEntity.setAttribute('position', `${feature.longitude} ${feature.elevation} ${-feature.latitude}`);
-            modelEntity.setAttribute('scale', '0.1 0.1 0.1');
+            modelEntity.setAttribute('scale', '0.5 0.5 0.5');
 
             // Choose the appropriate model based on the 'model' attribute
             switch (feature.model) {
