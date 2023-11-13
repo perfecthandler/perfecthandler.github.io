@@ -3,8 +3,8 @@
       {
         "id": 1,
         "name": "Car 1",
-        "latitude": 17.463981,
-        "longitude": 78.343768,
+        "latitude": 17.463884728671562,
+        "longitude": 78.3437565978023,
         "elevation": 2,
         "model": "Car_1.glb"
       },
