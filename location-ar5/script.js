@@ -14,6 +14,7 @@ AFRAME.registerComponent('geojson', {
                 // Create A-Frame entities for each feature in the GeoJSON
                 geojsonData.features.forEach(feature => {
                     if (feature.geometry.type === 'LineString') {
+                        alert(feature.geometry.coordinates);
                         this.createPolyline(feature.geometry.coordinates);
                     }
                 });
