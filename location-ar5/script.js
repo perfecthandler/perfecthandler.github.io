@@ -1,73 +1,39 @@
-window.onload = () => {
-    let places = staticLoadPlaces();
-    renderPlaces(places);
-};
+AFRAME.registerComponent('geojson', {
+    schema: {
+        src: { type: 'asset' }
+    },
 
-function staticLoadPlaces() {
-    return [
-        {
-            name: 'model1',
-            location: {
-                lat: 17.463884728671562,
-                lng: 78.3437565978023,
-            }
-        },
-        {
-            name: 'model2',
-            location: {
-                lat: 17.463904,
-                lng: 78.343745,
-            }
-        },
-        {
-            name: 'model3',
-            location: {
-                lat: 17.463884728671562,
-                lng: 78.3437565978023,
-            }
-        },
-        {
-            name: 'model4',
-            location: {
-                lat: 17.4638796115194,
-                lng: 78.34379146652084,
-            }
-        },
-        {
-            name: 'model5',
-            location: {
-                lat: 17.463894962975434,
-                lng: 78.34381828861203,
-            }
-        },
-        {
-            name: 'model6',
-            location: {
-                lat: 17.46383291749935,
-                lng: 78.34374318675668,
-            }
-        }
-    ];
-}
+    init: function () {
+        const el = this.el;
 
-function renderPlaces(places) {
-    let scene = document.querySelector('a-scene');
+        // Load GeoJSON data from the specified source
+        const src = this.data.src;
+        fetch(src)
+            .then(response => response.json())
+            .then(geojsonData => {
+                // Create A-Frame entities for each feature in the GeoJSON
+                geojsonData.features.forEach(feature => {
+                    if (feature.geometry.type === 'LineString') {
+                        this.createPolyline(feature.geometry.coordinates);
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Error loading GeoJSON:', error);
+            });
+    },
 
-    places.forEach((place) => {
-        let latitude = place.location.lat;
-        let longitude = place.location.lng;
-
-        let model = document.createElement('a-entity');
-        model.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-        model.setAttribute('gltf-model', 'assets/asset.glb');
-        model.setAttribute('rotation', '0 180 0');
-        //    model.setAttribute('animation-mixer', '');
-        model.setAttribute('scale', '0.5 0.5 0.5');
-
-        model.addEventListener('loaded', () => {
-            window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
+    createPolyline: function (coordinates) {
+        // Create an A-Frame entity for the polyline
+        const polylineEntity = document.createElement('a-entity');
+        polylineEntity.setAttribute('line', {
+            path: coordinates.map(coord => `${coord[0]} 0 ${coord[1]}`).join(','),
+            color: 'blue', // Set color to blue
+            opacity: 0.8,   // Set opacity (adjust as needed)
+            lineWidth: 10   // Set line thickness (adjust as needed)
         });
 
-        scene.appendChild(model);
-    });
-}
+        // Add the polyline entity to the scene
+        this.el.appendChild(polylineEntity);
+    }
+});
