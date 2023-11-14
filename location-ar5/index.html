@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR.js Polyline Example</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
+
+</head>
+<body style="margin: 0; overflow: hidden;">
+    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+        <!-- Add AR.js camera for AR tracking -->
+        <a-marker-camera preset="hiro"></a-marker-camera>
+
+        <!-- Load GeoJSON data and display polyline -->
+        <a-entity geojson="src: polyline.geojson"></a-entity>
+    </a-scene>
+</body>
+</html>
