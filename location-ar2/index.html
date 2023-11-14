@@ -56,15 +56,17 @@
 <html>
 <head>
 <title>AR.js A-Frame Location-based</title>
-<script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/1.4.2/aframe.js" integrity="sha512-s5JbTRTytI0iu6zxVilyXNEsisHynBLbxYSqWWTXZtuRlxyKjuaN+k49soG9C966BjzjUJlr7drAwn6asYqE+Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/1.4.2/aframe.min.js" integrity="sha512-rVwZ9RF3FKH6TH80cvAnWssdlHPvHfOFDXW0empc5E9gkzD1B7CiySJb4SCC8SgBILhTg7AFM8m3TR1wesZ6FQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
-<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ar.js/2.2.2/aframe-ar.js"></script>
 </head>
 <body>
 <a-scene embedded arjs vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
     <a-camera id='camera1' look-controls-enabled='false' arjs-device-orientation-controls='smoothingFactor: 0.1' gps-new-camera='gpsMinDistance: 5'> </a-camera>
-    <!-- <a-entity material='color: red' geometry='primitive: box' gps-new-entity-place="latitude: 17.463971683641983; longitude: 78.34379409772734" scale="60 0 1"></a-entity> -->
-    <a-entity polyline="lineWidth: 10; color: red; path: 17.464037137429827 78.34378680652242, 17.46392396973065 78.34376676531338, 17.463886870382268 78.34379828127052, 17.463898383973955 78.34383382054133;"></a-entity>
+    <a-entity material='color: red' geometry='primitive: box' gps-new-entity-place="latitude: 17.463971683641983; longitude: 78.34379409772734" scale="60 0 1"></a-entity>
+    <!-- <a-entity polyline="lineWidth: 10; color: red; path: 17.464037137429827 78.34378680652242, 17.46392396973065 78.34376676531338, 17.463886870382268 78.34379828127052, 17.463898383973955 78.34383382054133;"></a-entity> -->
 </a-scene>
 </body>
 </html>

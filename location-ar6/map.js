@@ -13,7 +13,8 @@ var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 var osmHOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
     maxZoom: 19,
-    attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France'});
+    attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France'
+});
 
 // var map = L.map('map', {
 //     center: [39.73, -104.99],
@@ -26,36 +27,36 @@ var osmHOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'
 
 
 var map = L.map('map', {
-   
+
     crs: L.CRS.EPSG4326,
     center: [23.00, 82.00],
     zoom: 3,
     zoomControl: false
-   // layers: [googleStreets]
+    // layers: [googleStreets]
 });
 
 var satellite = L.tileLayer('https://wi.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-   // maxZoom: 23,
-	    attribution: 'Source: Esri, Maxar, Earthstar Geographics, CNES/Airbus DS, USDA FSA, USGS, Getmapping, Aerogrid, IGN, IGP, and the GIS User Community'
-    }).addTo(map);
+    // maxZoom: 23,
+    attribution: 'Source: Esri, Maxar, Earthstar Geographics, CNES/Airbus DS, USDA FSA, USGS, Getmapping, Aerogrid, IGN, IGP, and the GIS User Community'
+}).addTo(map);
 
-    // var googleStreets = L.tileLayer('http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}',{
-    //     maxZoom: 20,
-    //     subdomains:['mt0','mt1','mt2','mt3']
-    // }).addTo(map);
+// var googleStreets = L.tileLayer('http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}',{
+//     maxZoom: 20,
+//     subdomains:['mt0','mt1','mt2','mt3']
+// }).addTo(map);
 
 
-    // JavaScript code (add to the existing code)
+// JavaScript code (add to the existing code)
 var polyline = L.polyline([
     [17.464037137429827, 78.34378680652242],
     [17.46392396973065, 78.34376676531338],
     [17.463886870382268, 78.34379828127052],
     [17.463898383973955, 78.34383382054133],
     [17.46386640177301, 78.34384924324377]
-  ]).addTo(map);
-  
+]).addTo(map);
 
-  function zoomTo() {
+
+function zoomTo() {
     var lat = document.getElementById("lat").value;
     var lng = document.getElementById("lng").value;
     // map.panTo(new L.LatLng(lat, lng));
@@ -63,12 +64,12 @@ var polyline = L.polyline([
 
     map.setView(new L.LatLng(lat, lng), 18);
 
-}   
+}
 
 
 window.addEventListener('resize', function () {
     map.invalidateSize();
-  });
+});
 
 
 // document.addEventListener('DOMContentLoaded', function () {
@@ -100,18 +101,21 @@ window.addEventListener('resize', function () {
 // points.push( new THREE.Vector3( 10, 0, 0 ) );
 
 // const geometry = new THREE.BufferGeometry().setFromPoints( points );
+window.onload = () => {
+   
+    AFRAME.registerComponent('polyline', {
+        init: function () {
+            // Create a polyline.
+            var polyline = document.createElement('polyline');
+            polyline.setAttribute('points', '17.464037137429827 78.34378680652242, 17.46392396973065 78.34376676531338, 17.463886870382268 78.34379828127052, 17.463898383973955 78.34383382054133');
+            polyline.setAttribute('fill', 'none');
+            polyline.setAttribute('stroke', 'red');
+            polyline.setAttribute('stroke-width', '2');
 
-AFRAME.registerComponent('polyline', {
-    init: function () {
-      // Create a polyline.
-      var polyline = document.createElement('polyline');
-      polyline.setAttribute('points', '17.464037137429827 78.34378680652242, 17.46392396973065 78.34376676531338, 17.463886870382268 78.34379828127052, 17.463898383973955 78.34383382054133');
-      polyline.setAttribute('fill', 'none');
-      polyline.setAttribute('stroke', 'red');
-      polyline.setAttribute('stroke-width', '2');
-  
-      // Add the polyline to the scene.
-      var scene = document.querySelector('a-scene');
-      scene.appendChild(polyline);
-    }
-  });
+            // Add the polyline to the scene.
+            var scene = document.querySelector('a-scene');
+            alert("registered");
+            scene.appendChild(polyline);
+        }
+    });
+}
