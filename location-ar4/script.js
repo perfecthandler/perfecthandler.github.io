@@ -10,7 +10,6 @@ fetch('data.json')
             modelEntity.setAttribute('position', `${feature.longitude} ${feature.elevation} ${-feature.latitude}`);
             modelEntity.setAttribute('scale', '0.5 0.5 0.5');
             modelEntity.setAttribute('gltf-model', 'assets/Car_1.glb');
-
     
             modelEntity.addEventListener('loaded', () => {
                 window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
