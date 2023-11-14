@@ -69,24 +69,15 @@
 
 
 
-
-
-
-
-    <a-scene embedded arjs>
-        <!-- AR content will go here -->
-
-        <!-- Define AR marker with polyline -->
-        <a-marker preset="hiro">
-            <!-- Polyline component -->
-            <a-entity polyline="lineWidth: 10; color: red; path: 17.464037137429827 78.34378680652242, 17.46392396973065 78.34376676531338, 17.463886870382268 78.34379828127052, 17.463898383973955 78.34383382054133;"></a-entity>
-
-            <!-- Other AR content can be added here -->
-        </a-marker>
-
-        <!-- Camera to view AR scene -->
-        <a-entity camera></a-entity>
+    <a-scene embedded arjs vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
+        <a-camera id='camera1' look-controls-enabled='false' arjs-device-orientation-controls='smoothingFactor: 0.1' gps-new-camera='gpsMinDistance: 5'> </a-camera>
+        <!-- <a-entity material='color: red' geometry='primitive: box' gps-new-entity-place="latitude: 17.463971683641983; longitude: 78.34379409772734" scale="60 0 1"></a-entity> -->
+        <!-- <a-entity polyline="lineWidth: 10; color: red; path: 17.464037137429827 78.34378680652242, 17.46392396973065 78.34376676531338, 17.463886870382268 78.34379828127052, 17.463898383973955 78.34383382054133;"></a-entity> -->
     </a-scene>
+
+
+
+  
     <script src="map.js"></script>
 </body>
 
