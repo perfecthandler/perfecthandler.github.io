@@ -48,9 +48,9 @@
                 alert(d);
              
                 const modelEntity = document.createElement('a-entity');
-                modelEntity.setAttribute('gps-entity-place', `latitude: ${feature.latitude}; longitude: ${feature.longitude};`);
+               // modelEntity.setAttribute('gps-entity-place', `latitude: ${feature.latitude}; longitude: ${feature.longitude};`);
 
-                // modelEntity.setAttribute('position', `${feature.longitude} ${feature.elevation} ${-feature.latitude}`);
+                modelEntity.setAttribute('position', `${feature.longitude} ${feature.elevation} ${feature.latitude}`);
                 modelEntity.setAttribute('scale', '0.5 0.5 0.5');
                 modelEntity.setAttribute('gltf-model', 'assets/asset.glb');
         
