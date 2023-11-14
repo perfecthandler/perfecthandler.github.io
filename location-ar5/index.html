@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <title>Pipeline Utility AR</title>
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
@@ -10,7 +10,7 @@
     <script src="script.js"></script>
 </head>
 <body style="margin: 0; overflow: hidden;">
-    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+    <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
         <!-- Add AR.js camera for AR tracking -->
         <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
 
@@ -21,5 +21,7 @@
             <a-asset-item id="pipeline-geojson" src="pipeline.geojson"></a-asset-item>
         </a-assets>
     </a-scene>
+
+ 
 </body>
 </html>
