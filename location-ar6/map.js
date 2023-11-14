@@ -100,3 +100,18 @@ window.addEventListener('resize', function () {
 // points.push( new THREE.Vector3( 10, 0, 0 ) );
 
 // const geometry = new THREE.BufferGeometry().setFromPoints( points );
+
+AFRAME.registerComponent('polyline', {
+    init: function () {
+      // Create a polyline.
+      var polyline = document.createElement('polyline');
+      polyline.setAttribute('points', '17.464037137429827 78.34378680652242, 17.46392396973065 78.34376676531338, 17.463886870382268 78.34379828127052, 17.463898383973955 78.34383382054133');
+      polyline.setAttribute('fill', 'none');
+      polyline.setAttribute('stroke', 'red');
+      polyline.setAttribute('stroke-width', '2');
+  
+      // Add the polyline to the scene.
+      var scene = document.querySelector('a-scene');
+      scene.appendChild(polyline);
+    }
+  });
