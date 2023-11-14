@@ -10,19 +10,19 @@
       },
       {
         "id": 2,
-        "name": "Tree 1",
-        "latitude": 17.463893958032134,
-        "longitude": 78.34386495645988,
+        "name": "Car 2",
+        "latitude": 17.4638796115194,
+        "longitude": 78.34379146652084,
         "elevation": 2,
-        "model": "Tree_1.obj"
+        "model": "Car_1.glb"
       },
       {
         "id": 3,
-        "name": "Tree 2",
-        "latitude": 17.463903872511093,
-        "longitude": 78.34374492760205,
+        "name": "Car 3",
+        "latitude": 17.463894962975434,
+        "longitude": 78.34381828861203,
         "elevation": 2,
-        "model": "Tree_2.fbx"
+        "model": "Car_1.glb"
       }
    
     ]
