@@ -43,7 +43,9 @@
         .then(data => {
             // Process the data and add 3D models to the scene
             data.features.forEach(feature => {
-                alert(feature.model);
+
+                const d = new Date();
+                alert(d);
              
                 const modelEntity = document.createElement('a-entity');
                 modelEntity.setAttribute('position', `${feature.longitude} ${feature.elevation} ${-feature.latitude}`);
