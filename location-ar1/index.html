@@ -3,15 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <title>AR Utility Network</title>
 
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
 
-    <!-- <script type='text/javascript'
-        src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script> -->
-    <!-- <script type='text/javascript'
-        src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script> -->
 
 </head>
 
@@ -26,8 +22,7 @@
     </a-scene> -->
 
     <a-scene embedded arjs="sourceType: webcam; trackingMethod: best;">
-        <!-- 3D models will be added dynamically here -->
-        <a-camera id='camera1' look-controls-enabled='false' arjs-device-orientation-controls='smoothingFactor: 0.1' gps-new-camera='gpsMinDistance: 5'> </a-camera>
+        <a-camera gps-new-cameraDistance: 5'></a-camera>
         <!-- <a-entity line="start: 0 1 0; end: 2 0 -5; color: red"
         line__2="start: -2 4 5; end: 0 4 -3; color: green"></a-entity> -->
         <a-box position="78.34378680652242 17.464037137429827 3" rotation="0 45 0" color="#4CC3D9"></a-box>
@@ -43,8 +38,8 @@
             line__2="start: 78.34376676531338 17.46392396973065 0; end: 78.34379828127052 17.463886870382268 0; color: green"></a-entity>
        
        
-        <a-entity camera></a-entity>
-        <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
+        <a-entity camera></a-entity>='gpsMin
+        <a-camera gps-new-cameraDistance: 5'></a-camera>
     </a-scene> -->
 
 
