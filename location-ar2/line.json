@@ -1,0 +1,38 @@
+{
+    "metadata": {
+      "version": 4.5,
+      "type": "Object",
+      "generator": "Object3D.toJSON"
+    },
+    "geometries": [
+      {
+        "uuid": "5BCC0BB3-C2F5-4C27-AB0E-72AE8E3F0E49",
+        "type": "BufferGeometry",
+        "data": {
+          "attributes": {
+            "position": {
+              "itemSize": 3,
+              "type": "Float32Array",
+              "array": [0, 0, 0, 1, 1, 1, 2, 2, 2]
+            }
+          }
+        }
+      }
+    ],
+    "materials": [
+      {
+        "uuid": "FF7F770C-CB0D-421D-AF4C-5B5CDB7F97CC",
+        "type": "LineBasicMaterial",
+        "color": 16711680,
+        "linewidth": 1
+      }
+    ],
+    "object": {
+      "uuid": "C6764E2E-74D3-450F-B3E7-6155A3752F5D",
+      "type": "Line",
+      "name": "Line",
+      "geometry": "5BCC0BB3-C2F5-4C27-AB0E-72AE8E3F0E49",
+      "material": "FF7F770C-CB0D-421D-AF4C-5B5CDB7F97CC"
+    }
+  }
+  

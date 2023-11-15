@@ -87,7 +87,7 @@
           var polyline = document.createElement('polyline');
           polyline.setAttribute('points', '17.464037137429827 78.34378680652242, 17.46392396973065 78.34376676531338, 17.463886870382268 78.34379828127052, 17.463898383973955 78.34383382054133');
           polyline.setAttribute('fill', 'none');
-          polyline.setAttribute('stroke', 'red');
+          polyline.setAttribute('stroke', 'green');
           polyline.setAttribute('stroke-width', '2');
       
           // Add the polyline to the scene.
