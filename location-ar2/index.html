@@ -21,15 +21,15 @@
 <body>
    
 
-    <script>
+    <!-- <script>
         AFRAME.registerComponent("some-line", {
           init: function() {
             // create an array of points. 
             const points = [];
-            points.push(new THREE.Vector3(78.34378680652242,17.464037137429827, 0));
-            points.push(new THREE.Vector3(78.34376676531338,17.46392396973065, 0));
-            points.push(new THREE.Vector3(78.34379828127052,17.463886870382268, 0));
-            points.push(new THREE.Vector3(78.34383382054133,17.463898383973955, 0));
+            points.push(new THREE.Vector3(78.34378680652242,17.464037137429827, 3));
+            points.push(new THREE.Vector3(78.34376676531338,17.46392396973065, 3));
+            points.push(new THREE.Vector3(78.34379828127052,17.463886870382268, 3));
+            points.push(new THREE.Vector3(78.34383382054133,17.463898383973955, 3));
             points.push(new THREE.Vector3(78.34384924324377,17.46386640177301, 0));
          
       
@@ -43,12 +43,37 @@
             this.el.object3D.add(line);
           }
         })
-      </script>
+      </script> -->
 
-<a-scene>
+      <script>
+        // Load Three.js 3D JSON model (line.json)
+        const lineModelURL = 'pipeline.json';
+
+        // Create a loader for the 3D model
+        const loader = new THREE.ObjectLoader();
+
+        // Load the 3D model
+        loader.load(lineModelURL, (lineFeature) => {
+            // Set position, scale, or any other adjustments
+            lineFeature.scale.set(0.1, 0.1, 0.1);
+
+            // Add the line feature to the scene
+            document.querySelector('#lineFeature').object3D.add('mesh', lineFeature);
+        });
+    </script>
+
+<!-- <a-scene>
     <a-entity position="78.34378680652242 17.464037137429827 0" some-line></a-entity>
     <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
-  </a-scene>
+  </a-scene> -->
+
+  <a-scene embedded arjs="sourceType: webcam; trackingMethod: best;">
+    <a-marker preset="hiro">
+        <!-- Add your Three.js AR content here -->
+        <a-entity id="lineFeature"></a-entity>
+    </a-marker>
+    <a-entity camera></a-entity>
+</a-scene>
      
 </body>
 
