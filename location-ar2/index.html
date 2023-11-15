@@ -67,12 +67,14 @@
     <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
   </a-scene> -->
 
-  <a-scene embedded arjs="sourceType: webcam; trackingMethod: best;">
+  <a-scene vr-mode-ui="enabled: false" embedded
+        arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
+         <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
    
         <!-- Add your Three.js AR content here -->
         <a-entity id="lineFeature"></a-entity>
    
-        <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>  
+        
 </a-scene>
      
 </body>
