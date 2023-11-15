@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AR Utility Network</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script> -->
+   
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
 </head>
 
 <body style="margin: 0; overflow: hidden;">
@@ -19,54 +20,13 @@
         <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
     </a-scene>
 
-    <script>
-        // Load GIS data (Assuming GeoJSON for simplicity)
-        const geoJsonData = {
-            "type": "FeatureCollection",
-            "features": [
-                {
-                    "type": "Feature",
-                    "geometry": {
-                        "type": "LineString",
-                        "coordinates": [
-                            [17.464037137429827, 78.34378680652242],
-                            [17.46392396973065, 78.34376676531338],
-                            [17.463886870382268, 78.34379828127052],
-                            [17.463898383973955, 78.34383382054133],
-                            [17.46386640177301, 78.34384924324377]
-                        ]
-                    }
-                },
-                {
-                    "type": "Feature",
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [17.46386640177301, 78.34384924324377]
-                    }
-                }
-                // Add more features as needed
-            ]
-        };
+    <a-scene>
+        <a-entity line="start: 17.464037137429827 78.34378680652242 0; end: 17.46386640177301 78.34384924324377 -2; color: blue"></a-entity>
+                  <a-entity camera></a-entity>
+                  <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
+      </a-scene>
 
-        // Convert GIS data to Three.js objects
-        const objects = geoJsonData.features.map(feature => {
-            if (feature.geometry.type === "LineString") {
-                // Convert LineString to Three.js Line geometry
-                const lineGeometry = new THREE.BufferGeometry().setFromPoints(feature.geometry.coordinates.map(coord => new THREE.Vector3(coord[0], coord[1], 0)));
-                const lineMaterial = new THREE.LineBasicMaterial({ color: 0x00ff00 });
-                return new THREE.Line(lineGeometry, lineMaterial);
-            } else if (feature.geometry.type === "Point") {
-                // Convert Point to Three.js Sphere geometry
-                const sphereGeometry = new THREE.SphereGeometry(0.01, 8, 8);
-                const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-                return new THREE.Mesh(sphereGeometry, sphereMaterial);
-            }
-        });
-
-        // Add the objects to the scene
-        const utilityNetwork = document.querySelector('#utilityNetwork');
-        objects.forEach(object => utilityNetwork.appendChild(object));
-    </script>
+   
 </body>
 
 </html>

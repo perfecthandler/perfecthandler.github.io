@@ -81,18 +81,38 @@
     // };
 
     window.onload = () => {
-    AFRAME.registerComponent('polyline', {
-        init: function () {
-          // Create a polyline.
-          var polyline = document.createElement('polyline');
-          polyline.setAttribute('points', '17.464037137429827 78.34378680652242, 17.46392396973065 78.34376676531338, 17.463886870382268 78.34379828127052, 17.463898383973955 78.34383382054133');
-          polyline.setAttribute('fill', 'none');
-          polyline.setAttribute('stroke', 'green');
-          polyline.setAttribute('stroke-width', '2');
-      
-          // Add the polyline to the scene.
-          var scene = document.querySelector('a-scene');
-          scene.appendChild(polyline);
+      AFRAME.registerComponent("some-line", {
+        init: function() {
+          // create an array of points. 
+          const points = [];
+          points.push(new THREE.Vector3(-1.25, -0.35, 0));
+          points.push(new THREE.Vector3(-1, 0.15, 0));
+          points.push(new THREE.Vector3(-0.5, 0.25, 0));
+          points.push(new THREE.Vector3(0, 1, 0));
+          points.push(new THREE.Vector3(0.5, 0.25, 0));
+          points.push(new THREE.Vector3(1, 0.15, 0));
+          points.push(new THREE.Vector3(1.25, -0.35, 0));
+    
+          // create the line material
+          const material = new THREE.LineBasicMaterial({color: 0x0000ff});
+          // create the geometry from points
+          const geometry = new THREE.BufferGeometry().setFromPoints(points);
+          // create a THREE.Line from the geometry and material
+          const line = new THREE.Line(geometry, material);
+          // add it to this entity
+          this.el.object3D.add(line);
         }
       });
+
+      const scene = document.querySelector("a-scene");
+// when the scene is loaded
+scene.addEventListener("loaded", () => {
+  // create an entity
+  const el = document.createElement("a-entity");
+  // append it to the scene
+  scene.appendChild(el);
+  // set the position and line component
+  el.setAttribute("position", "0 1.6 -2")
+  el.setAttribute("some-line", "")
+})
     };
