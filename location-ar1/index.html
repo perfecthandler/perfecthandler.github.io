@@ -6,15 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AR Utility Network</title>
 
+ 
+    <!-- A-Frame itself -->
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-    <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ar.js/2.1.1/aframe-ar.js"></script> -->
-    <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
 
+    <!-- Pure three.js code that the A-Frame components use for location-based AR -->
+    <script type='text/javascript'
+        src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
 
-
-
-<script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+    <!-- AR.js A-Frame components -->
+    <script type='text/javascript'
+        src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
 
 </head>
 
@@ -29,25 +31,28 @@
     </a-scene> -->
     <!-- <a-scene> -->
     <!-- <a-scene embedded arjs="sourceType: webcam; trackingMethod: best;"> -->
-        <!-- <a-camera gps-new-cameraDistance: 5'></a-camera> -->
-        <!-- <a-entity line="start: 0 1 0; end: 2 0 -5; color: red"
+    <!-- <a-camera gps-new-cameraDistance: 5'></a-camera> -->
+    <!-- <a-entity line="start: 0 1 0; end: 2 0 -5; color: red"
         line__2="start: -2 4 5; end: 0 4 -3; color: green"></a-entity> -->
-        <!-- <a-box position="78.34378680652242 17.464037137429827 3" rotation="0 45 0" color="#4CC3D9"></a-box>
+    <!-- <a-box position="78.34378680652242 17.464037137429827 3" rotation="0 45 0" color="#4CC3D9"></a-box>
       <a-sphere position="8.34378680652242 17.464037137429827 3" radius="1.25" color="#EF2D5E"></a-sphere>
       <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
       <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane> -->
-      <!-- <a-sky color="#ECECEC"></a-sky> -->
+    <!-- <a-sky color="#ECECEC"></a-sky> -->
     <!-- </a-scene> -->
 
 
     <a-scene embedded arjs="sourceType: webcam; trackingMethod: best;">
         <!-- 3D models will be added dynamically here -->
-        <a-camera id='camera1' look-controls-enabled='false' arjs-device-orientation-controls='smoothingFactor: 0.1' gps-new-camera='gpsMinDistance: 5'> </a-camera>
-        <a-entity material='color: red' geometry='primitive: box' gps-new-entity-place="latitude: 17.463971683641983; longitude: 78.34379409772734" scale="60 1 5"></a-entity>
+        <a-camera id='camera1' look-controls-enabled='false' arjs-device-orientation-controls='smoothingFactor: 0.1'
+            gps-new-camera='gpsMinDistance: 5'> </a-camera>
+        <a-entity material='color: red' geometry='primitive: box'
+            gps-new-entity-place="latitude: 17.463971683641983; longitude: 78.34379409772734" scale="60 1 5"></a-entity>
 
-        <a-entity line="start: 78.34378680652242 17.464037137429827 0; end: 78.34384924324377 17.46386640177301 0; color: green"
-        line__2="start: 78.34376676531338 17.46392396973065 0; end: 78.34379828127052 17.463886870382268 0; color: green"></a-entity>
-   
+        <a-entity
+            line="start: 78.34378680652242 17.464037137429827 0; end: 78.34384924324377 17.46386640177301 0; color: green"
+            line__2="start: 78.34376676531338 17.46392396973065 0; end: 78.34379828127052 17.463886870382268 0; color: green"></a-entity>
+
     </a-scene>
 
     <!-- <a-scene embedded arjs="sourceType: webcam; trackingMethod: best;">
