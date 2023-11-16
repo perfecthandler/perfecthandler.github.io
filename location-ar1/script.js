@@ -80,47 +80,69 @@
     //     .catch(error => console.error(error));
     // };
 
-    window.onload = () => {
-      AFRAME.registerComponent("some-line", {
-        init: function() {
-          // create an array of points. 
-          const points = [];
-          points.push(new THREE.Vector3(-1.25, -0.35, 0));
-          points.push(new THREE.Vector3(-1, 0.15, 0));
-          points.push(new THREE.Vector3(-0.5, 0.25, 0));
-          points.push(new THREE.Vector3(0, 1, 0));
-          points.push(new THREE.Vector3(0.5, 0.25, 0));
-          points.push(new THREE.Vector3(1, 0.15, 0));
-          points.push(new THREE.Vector3(1.25, -0.35, 0));
+    // Example using Three.js to create a 3D line from GeoJSON coordinates
+const create3DLine = (coordinates) => {
+  const geometry = new THREE.BufferGeometry();
+  const vertices = new Float32Array(coordinates.flat());
+  geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
+
+  const material = new THREE.LineBasicMaterial({ color: 0x00ff00 });
+  const line = new THREE.Line(geometry, material);
+
+  scene.add(line);
+};
+
+// Example using AR.js to create an AR marker and place the 3D line
+AFRAME.registerComponent('pipe-marker', {
+  init: function () {
+      // Fetch and parse GeoJSON data
+      const geoJsonData = fetchGeoJsonData(); // Implement this function
+
+      // Convert GeoJSON coordinates to 3D
+      const coordinates3D = convertTo3D(geoJsonData.features[0].geometry.coordinates);
+
+      // Create and add 3D line to the AR marker
+      create3DLine(coordinates3D);
+
+      // Update AR.js marker location
+      this.el.object3D.position.set(0, 0, 0); // Set marker position
+  }
+});
+
+
+//     window.onload = () => {
+//       AFRAME.registerComponent("some-line", {
+//         init: function() {
+//           // create an array of points. 
+//           const points = [];
+//           points.push(new THREE.Vector3(-1.25, -0.35, 0));
+//           points.push(new THREE.Vector3(-1, 0.15, 0));
+//           points.push(new THREE.Vector3(-0.5, 0.25, 0));
+//           points.push(new THREE.Vector3(0, 1, 0));
+//           points.push(new THREE.Vector3(0.5, 0.25, 0));
+//           points.push(new THREE.Vector3(1, 0.15, 0));
+//           points.push(new THREE.Vector3(1.25, -0.35, 0));
     
-          // create the line material
-          const material = new THREE.LineBasicMaterial({color: 0x0000ff});
-          // create the geometry from points
-          const geometry = new THREE.BufferGeometry().setFromPoints(points);
-          // create a THREE.Line from the geometry and material
-          const line = new THREE.Line(geometry, material);
-          // add it to this entity
-          this.el.object3D.add(line);
-        }
-      });
+//           // create the line material
+//           const material = new THREE.LineBasicMaterial({color: 0x0000ff});
+//           // create the geometry from points
+//           const geometry = new THREE.BufferGeometry().setFromPoints(points);
+//           // create a THREE.Line from the geometry and material
+//           const line = new THREE.Line(geometry, material);
+//           // add it to this entity
+//           this.el.object3D.add(line);
+//         }
+//       });
 
-  //     var position = new THREE.Vector3();
-  // var quaternion = new THREE.Quaternion();
-  // alert(this.el.object3D.getWorldPosition(position));
-  // alert(this.el.object3D.getWorldQuaternion(quaternion));
-
-      const scene = document.querySelector("a-scene");
-// when the scene is loaded
-scene.addEventListener("loaded", () => {
-  // create an entity
-  const el = document.createElement("a-entity");
-  // append it to the scene
-  scene.appendChild(el);
-
-  
-alert("ss");
-  // set the position and line component
-  el.setAttribute("position", "0 0 -2")
-  el.setAttribute("some-line", "")
-})
-    };
+//       const scene = document.querySelector("a-scene");
+// // when the scene is loaded
+// scene.addEventListener("loaded", () => {
+//   // create an entity
+//   const el = document.createElement("a-entity");
+//   // append it to the scene
+//   scene.appendChild(el);
+//   // set the position and line component
+//   el.setAttribute("position", "0 1.6 -2")
+//   el.setAttribute("some-line", "")
+// })
+//     };

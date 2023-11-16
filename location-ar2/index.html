@@ -12,11 +12,10 @@
   <script type='text/javascript'
     src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
 
-  <script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
-  <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
-  <script>
-    THREEx.ArToolkitContext.baseURL = 'https://raw.githack.com/jeromeetienne/ar.js/master/three.js/'
-  </script>
+  <!-- <script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script> -->
+  <!-- <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script> -->
+  <!-- <script src="https://raw.githack.com/jeromeetienne/ar.js/master/three.js"></script> -->
+  <script src="script.js"></script>
   <title>AR Polyline Viewer</title>
 </head>
 
@@ -47,35 +46,11 @@
         })
       </script> -->
 
-  <script>
-    // Load Three.js 3D JSON model (line.json)
-    const lineModelURL = 'line.json';
-
-    // Create a loader for the 3D model
-    const loader = new THREE.ObjectLoader();
-
-    // Load the 3D model
-    loader.load(lineModelURL, (lineFeature) => {
-      // Set position, scale, or any other adjustments
-      lineFeature.scale.set(0.1, 0.1, 0.1);
-
-      // Add the line feature to the scene
-      document.querySelector('#lineFeature').object3D.add('mesh', lineFeature);
-    });
-  </script>
-
-  <!-- <a-scene>
-    <a-entity position="78.34378680652242 17.464037137429827 0" some-line></a-entity>
-    <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
-  </a-scene> -->
-
-
-  <a-scene vr-mode-ui="enabled: false" embedded
-  arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
-  <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
- <!-- Add your Three.js AR content here -->
- <a-entity id="lineFeature"></a-entity>
-
+     
+      <!-- <a-scene>
+        <a-entity position="0 1.6 -2" some-line></a-entity>
+        <a-sky color="#ECECEC"></a-sky>
+      </a-scene> -->
 
 </body>
 
