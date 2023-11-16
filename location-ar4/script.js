@@ -79,8 +79,12 @@
     //     })
     //     .catch(error => console.error(error));
     // };
-
+var scene;
     window.onload = () => {
+      alert("loaded");
+    scene = document.querySelector("a-scene");
+    }
+ 
       AFRAME.registerComponent("some-line", {
         init: function() {
           // create an array of points. 
@@ -109,7 +113,7 @@
   // alert(this.el.object3D.getWorldPosition(position));
   // alert(this.el.object3D.getWorldQuaternion(quaternion));
 
-      const scene = document.querySelector("a-scene");
+     
 // when the scene is loaded
 scene.addEventListener("loaded", () => {
   // create an entity
@@ -118,9 +122,8 @@ scene.addEventListener("loaded", () => {
   scene.appendChild(el);
 
   
-alert("ss");
+
   // set the position and line component
   el.setAttribute("position", "0 0 -2")
   el.setAttribute("some-line", "")
-})
-    };
+});
