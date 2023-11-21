@@ -47,6 +47,9 @@ AFRAME.registerComponent('run', {
     {
         if ( markerVisible["m0"] && markerVisible["m1"] )
         {
+            alert(this.p0);
+            alert(this.p1);
+
             this.m0.object3D.getWorldPosition(this.p0);
             this.m1.object3D.getWorldPosition(this.p1);
             this.geometry.vertices[0] = this.p0;
@@ -86,7 +89,7 @@ AFRAME.registerComponent('run', {
     <a-marker type="pattern" url="data/kanji.patt" id="baseMarker" >
     </a-marker>
 
-    <a-entity camera></a-entity>
+    <a-camera gps-camera rotation-reader></a-camera>
 
     <a-entity run></a-entity>
 
