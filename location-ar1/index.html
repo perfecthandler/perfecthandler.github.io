@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
@@ -23,5 +23,68 @@
       ></a-text>
       <a-camera gps-camera rotation-reader> </a-camera>
     </a-scene>
+  </body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Location-based AR Web App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/2.0.8/aframe/build/aframe-ar.js"></script>
+  </head>
+  <body style="margin: 0; overflow: hidden;">
+    <a-scene
+      vr-mode-ui="enabled: false"
+      embedded
+      arjs="sourceType: webcam; debugUIEnabled: false;"
+    >
+      <!-- AR Marker for origin -->
+      <a-marker preset="hiro">
+        <!-- Lines and Polylines go here -->
+      </a-marker>
+
+      <!-- Camera -->
+      <a-entity camera></a-entity>
+    </a-scene>
+
+    <script>
+      AFRAME.registerComponent('line', {
+        init: function () {
+          // Access the polyline coordinates from GIS data
+          const polylineCoordinates = [
+            { latitude: 17.46392396973065, longitude: 78.34376676531338 },
+            { latitude: 17.463886870382268, longitude: 78.34379828127052 },
+            { latitude: 17.463898383973955, longitude: 78.34383382054133 }
+            // Add more coordinates as needed
+          ];
+
+          // Create lines and polylines
+          for (let i = 0; i < polylineCoordinates.length - 1; i++) {
+            const start = polylineCoordinates[i];
+            const end = polylineCoordinates[i + 1];
+
+            // Create a line
+            const line = document.createElement('a-entity');
+            line.setAttribute('line', {
+              start: `${start.latitude} 0 ${start.longitude}`,
+              end: `${end.latitude} 0 ${end.longitude}`,
+              color: 'blue'
+            });
+            this.el.appendChild(line);
+
+            // Create a polyline (connecting multiple lines)
+            const polyline = document.createElement('a-entity');
+            polyline.setAttribute('line', {
+              path: `${start.latitude} 0 ${start.longitude}, ${end.latitude} 0 ${end.longitude}`,
+              color: 'red'
+            });
+            this.el.appendChild(polyline);
+          }
+        }
+      });
+    </script>
   </body>
 </html>
