@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location-based AR</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/2.3.1/aframe/build/aframe-ar.js"></script>
+</head>
+<body>
+    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+        <!-- Load your GeoJSON file and create AR markers for each polyline -->
+        <a-entity id="markers" geojson-loader="src:pipeline.geojson"></a-entity>
+
+        <!-- Handle AR camera and tracking -->
+        <a-camera gps-camera rotation-reader></a-camera>
+    </a-scene>
+
+    <script>
+        // Register custom A-Frame component to load GeoJSON and create AR markers
+        AFRAME.registerComponent('geojson-loader', {
+            schema: {
+                src: { type: 'string' }
+            },
+            init: function () {
+                const el = this.el;
+                const src = this.data.src;
+
+                // Load GeoJSON data
+                fetch(src)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Iterate through features and create AR markers for polylines
+                        data.features.forEach(feature => {
+                            if (feature.geometry.type === 'LineString') {
+                                const lineString = feature.geometry.coordinates;
+                                const lineEntity = document.createElement('a-entity');
+                                lineEntity.setAttribute('line', {
+                                    path: lineString.map(coord => `${coord[0]} 0 ${coord[1]}`).join(',')
+                                });
+                                el.appendChild(lineEntity);
+                            }
+                        });
+                    })
+                    .catch(error => console.error('Error loading GeoJSON:', error));
+            }
+        });
+    </script>
+</body>
+</html>
