@@ -1,89 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web_GIS</title>
-
-    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-    <!-- CSS only -->
-    <link href="libs/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- JavaScript Bundle with Popper -->
-
-    <script src="libs/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
-    <script src="libs/jquery.js"></script>
-
-    <link rel="stylesheet" href="libs/leaflet/leaflet.css" />
-    <script src="libs/leaflet/leaflet.js"></script>
-
-    <script src="libs/L.Control.ZoomBar-master/src/L.Control.ZoomBar.js"></script>
-    <link rel="stylesheet" href="libs/L.Control.ZoomBar-master/src/L.Control.ZoomBar.css" />
-
-    <script src="libs/Leaflet.zoomslider-master/src/L.Control.Zoomslider.js"></script>
-    <link rel="stylesheet" href="libs/Leaflet.zoomslider-master/src/L.Control.Zoomslider.css" />
-
-    <script src="libs/Leaflet.MousePosition-master/src/L.Control.MousePosition.js"></script>
-    <link rel="stylesheet" href="libs/Leaflet.MousePosition-master/src/L.Control.MousePosition.css" />
-
-    <link rel="stylesheet" href="libs/geocoder.css" />
-    <script src="libs/geocoder.js"></script>
-
-    <script src="libs/leaflet-search.js"></script>
-
-    <link rel="stylesheet" href="libs/polyline-measure/line-measure.css" />
-    <script src="libs/polyline-measure/line-measure.js"></script>
-
-
-
-    <link rel="stylesheet" href="libs/leaflet-measure-master/leaflet-measure.css" />
-    <script src="libs/leaflet-measure-master/leaflet-measure.js"></script>
-    <script src="libs/feat.js"></script>
-    <script src="https://kartena.github.io/Proj4Leaflet/lib/proj4-compressed.js"></script>
-    <script src="https://kartena.github.io/Proj4Leaflet/src/proj4leaflet.js"></script>
-
-
-
-    <link rel="stylesheet" href="libs/jquery-ui-1.12.1/jquery-ui.css">
-    <script src="libs/jquery-ui-1.12.1/external/jquery/jquery.js"></script>
-    <script src="libs/jquery-ui-1.12.1/jquery-ui.js"></script>
-
-    <link rel="stylesheet" href="style.css">
-
+    <title>AR GeoJSON Polylines</title>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <!-- Pure three.js code that the A-Frame components use for location-based AR -->
+    <script type='text/javascript'
+        src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
+    <!-- AR.js A-Frame components -->
+    <script type='text/javascript'
+        src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/geojson/0.5.0/geojson.min.js"></script>
+    <script src="script.js"></script>
 </head>
-
 <body>
-    Latitude: <input type="text" name="lat" id="lat" value="17.46392396973065" />
-    <br />
-    Longitude: <input type="text" name="lng" id="lng" value="78.34376676531338" />
-    <input type="button" onclick="zoomTo()" value="zoomTo" />
-    <div id="mapid"></div>
-
-
-
-    <!-- <div id="map" class="map">
-      
-    </div> -->
-
-
-
-    <a-scene embedded arjs vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
-        <!-- <a-camera id='camera1' look-controls-enabled='false' arjs-device-orientation-controls='smoothingFactor: 0.1' gps-new-camera='gpsMinDistance: 5'> </a-camera> -->
-        <!-- <a-entity material='color: red' geometry='primitive: box' gps-new-entity-place="latitude: 17.463971683641983; longitude: 78.34379409772734" scale="60 0 1"></a-entity> -->
-        <!-- <a-entity polyline="lineWidth: 10; color: red; path: 17.464037137429827 78.34378680652242, 17.46392396973065 78.34376676531338, 17.463886870382268 78.34379828127052, 17.463898383973955 78.34383382054133;"></a-entity> -->
-        <a-entity id="leaflet-container" position="0 0 0">
-          <!-- <div id="map" class="map"> -->
-      
-    </div>
-          </a-entity>
+    <a-scene arjs="trackingMethod: best;sourceType: webcam;">
+        <a-entity camera></a-entity>
     </a-scene>
-
-
-
-  
-    <script src="map.js"></script>
 </body>
-
 </html>
