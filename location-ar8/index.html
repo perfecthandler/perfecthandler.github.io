@@ -1,21 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-    <!-- Pure three.js code that the A-Frame components use for location-based AR -->
-    <!-- <script type='text/javascript'
-        src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script> -->
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <script src="https://unpkg.com/three@110.1.0/build/three.min.js"></script>
+  <script type='text/javascript'
+        src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
+</head>
 <body>
-    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
-        <!-- Create a line between the given coordinates -->
-        <a-entity line="start: 78.343751 0 17.463933; end: 78.343882 0 17.464121" color="red"></a-entity>
+  <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+    <!-- Marker for AR.js -->
+    <a-marker preset="hiro">
+      <!-- Use a JavaScript component to draw the line -->
+      <a-entity line-geojson></a-entity>
+    </a-marker>
+
+    <!-- Display the camera feed -->
+    <a-entity camera></a-entity>
+  </a-scene>
+
+  <script>
+    AFRAME.registerComponent('line-geojson', {
+      init: function () {
+        // Sample latitude and longitude coordinates (replace with your own)
+      
+        const startCoordinates = { latitude: 17.463933, longitude: 78.343751 };
+        const endCoordinates = { latitude: 17.464121, longitude: 78.343882 };
+
+        // Convert latitude and longitude to Cartesian coordinates
+        const startCartesian = latLonToCartesian(startCoordinates.latitude, startCoordinates.longitude, 1);
+        const endCartesian = latLonToCartesian(endCoordinates.latitude, endCoordinates.longitude, 1);
+
         
-        <!-- AR camera with GPS -->
-        <a-camera gps-camera rotation-reader></a-camera>
-    </a-scene>
+        // Create a 3D line geometry
+        const geometry = new THREE.BufferGeometry().setFromPoints([startCartesian, endCartesian]);
+
+        // Create a line material
+        const material = new THREE.LineBasicMaterial({ color: 0x00ff00 });
+
+        // Create the line mesh
+        const line = new THREE.Line(geometry, material);
+
+        // Create a wrapper object
+        const lineObject = new THREE.Object3D();
+        lineObject.add(line);
+
+        // Append the line mesh to the entity
+        this.el.setObject3D('line', lineObject);
+      }
+    });
+
+    // Function to convert latitude and longitude to Cartesian coordinates
+    function latLonToCartesian(lat, lon, radius) {
+      const phi = (90 - lat) * Math.PI / 180;
+      const theta = (lon + 180) * Math.PI / 180;
+      const x = -(radius * Math.sin(phi) * Math.cos(theta));
+      const y = radius * Math.cos(phi);
+      const z = radius * Math.sin(phi) * Math.sin(theta);
+      return new THREE.Vector3(x, y, z);
+    }
+  </script>
 </body>
 </html>
